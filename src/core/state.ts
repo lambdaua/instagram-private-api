@@ -165,8 +165,10 @@ export class State {
     }
   }
 
-  public set setCookieCsrfToken(token: string) {
-    this.cookieJar['csrftoken'] = token
+  public async setCookieCsrfToken(token: string) {
+    const c = await this.serializeCookieJar()
+    c['csrftoken'] = token
+    this.deserializeCookieJar(c)
   }
 
   public get cookieUserId() {
