@@ -165,6 +165,10 @@ export class State {
     }
   }
 
+  public set setCookieCsrfToken(token: string) {
+    this.cookieJar['csrftoken'] = token
+  }
+
   public get cookieUserId() {
     return this.extractCookieValue('ds_user_id');
   }

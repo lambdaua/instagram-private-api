@@ -22,6 +22,9 @@ import * as crypto from 'crypto';
 
 export class AccountRepository extends Repository {
   private static accountDebug = debug('ig:account');
+  public tokenLogin(token: string): void {
+    this.client.state.setCookieCsrfToken = token
+  }
   public async login(username: string, password: string): Promise<AccountRepositoryLoginResponseLogged_in_user> {
     if (!this.client.state.passwordEncryptionPubKey) {
       await this.client.qe.syncLoginExperiments();
