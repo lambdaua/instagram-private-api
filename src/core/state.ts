@@ -166,7 +166,7 @@ export class State {
   }
 
   public setCookieCsrfToken(token: string) {
-    this.cookieJar.setCookie('sessionid=' + token, this.constants.HOST);
+    this.cookieJar.setCookie('sessionid=' + token + '; path=/; domain=.instagram.com', this.constants.HOST);
   }
 
   public get cookieUserId() {
